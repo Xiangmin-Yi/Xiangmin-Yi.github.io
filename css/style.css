@@ -1,0 +1,195 @@
+/* ============================================================
+   Xiangmin Yi — Academic Homepage
+   中英双版共享样式（布局参照 huiningyuan.github.io 源码：
+   左侧人物侧栏 + 右侧正文两栏结构）
+   ============================================================ */
+
+:root {
+  color-scheme: light;
+  --paper: #ffffff;
+  --ink: #263440;
+  --muted: #64717e;
+  --link: #225f9e;
+  --line: #e2e9ee;
+  --wash: #f4f8fb;
+  --page-width: 1130px;
+  --header-height: 64px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+    "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", "Helvetica Neue",
+    Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--link); text-decoration: none; text-underline-offset: 3px; }
+a:hover { text-decoration: underline; }
+strong { font-weight: 600; }
+p { margin: 0 0 14px; }
+h1, h2, h3 { margin: 0; color: var(--ink); }
+h2 { font-size: 26px; font-weight: 600; line-height: 1.25; letter-spacing: -0.3px; margin-bottom: 20px; }
+h3 { font-size: 17.5px; font-weight: 600; line-height: 1.4; }
+
+.icon { width: 18px; height: 18px; flex: 0 0 18px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+
+/* ---------- Header ---------- */
+.site-header { position: sticky; top: 0; z-index: 5; border-bottom: 1px solid var(--line); background: rgba(255, 255, 255, 0.97); }
+.header-inner { max-width: var(--page-width); min-height: var(--header-height); margin: 0 auto; padding: 0 26px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.home-link { font-weight: 600; font-size: 19px; color: var(--ink); white-space: nowrap; }
+.home-link:hover { color: var(--link); text-decoration: none; }
+.header-inner nav { display: flex; align-items: center; gap: 26px; }
+.header-inner nav a { font-size: 15.5px; color: var(--muted); white-space: nowrap; }
+.header-inner nav a:hover { color: var(--link); text-decoration: none; }
+.header-inner nav .lang { color: var(--link); font-weight: 600; }
+
+/* ---------- Two-column layout ---------- */
+.page-layout {
+  max-width: var(--page-width);
+  margin: 44px auto 0;
+  padding: 0 26px;
+  display: grid;
+  grid-template-columns: 230px minmax(0, 1fr);
+  gap: 64px;
+  align-items: start;
+}
+
+/* ---------- Left profile sidebar ---------- */
+.profile { position: sticky; top: 88px; }
+.portrait { display: block; width: 210px; max-width: 100%; height: 252px; object-fit: cover; border-radius: 5px; }
+.profile h1 {
+  margin: 20px 0 8px;
+  font-family: Georgia, "Times New Roman", "Songti SC", "SimSun", serif;
+  font-size: 30px;
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+.profile-role { line-height: 1.5; margin-bottom: 16px; font-size: 16px; }
+.profile-affiliation { display: inline-flex; align-items: center; gap: 7px; }
+.profile-interests { font-size: 15.5px; color: var(--muted); line-height: 1.5; margin-bottom: 20px; }
+.profile-links { list-style: none; margin: 0; padding: 0; }
+.profile-links li + li { margin-top: 8px; }
+.profile-links a { display: inline-flex; align-items: center; gap: 10px; font-size: 15.5px; }
+.email-address { display: inline-block; font-size: 14px; margin-top: 18px; color: var(--muted); overflow-wrap: anywhere; }
+
+/* ---------- Main content ---------- */
+main { min-width: 0; }
+main > section { margin-bottom: 46px; scroll-margin-top: 20px; }
+.about-section p { max-width: 76ch; }
+
+.section-heading { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
+.section-heading h2 { margin-bottom: 7px; }
+.section-link { font-size: 14px; white-space: nowrap; }
+.section-note { font-size: 14px; color: var(--muted); margin-bottom: 18px; }
+
+/* ---------- Publications ---------- */
+.pub { padding: 22px 0 24px; border-bottom: 1px solid var(--line); }
+.pub:first-of-type { padding-top: 0; }
+.pub:last-child { border-bottom: 0; padding-bottom: 0; }
+
+.pub-title { margin-bottom: 7px; font-size: 17.5px; line-height: 1.4; }
+.pub-title a { color: var(--ink); }
+.pub-title a:hover { color: var(--link); text-decoration: none; }
+
+.pub-authors { font-size: 14.5px; color: var(--muted); line-height: 1.5; margin-bottom: 7px; }
+.pub-authors .me { color: var(--link); font-weight: 700; }
+
+.pub-desc { font-size: 15.5px; line-height: 1.5; margin-bottom: 9px; }
+
+.pub-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 18px; }
+
+.venue {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 2px 11px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.venue.iclr    { background: #e4f2ee; color: #3d7a6e; }
+.venue.cvpr    { background: #f7e9e9; color: #a05252; }
+.venue.neurips { background: #efeaf6; color: #6b5f96; }
+.venue.journal { background: #e8f0f9; color: #3d6a99; }
+.venue.preprint{ background: #f1f4f7; color: #64717e; }
+
+.pub-links { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 17px; font-size: 14px; font-weight: 600; }
+
+/* ---------- Experience / Education ---------- */
+.entry { display: grid; grid-template-columns: 48px minmax(0, 1fr); column-gap: 17px; }
+.entry-logo { grid-column: 1; grid-row: 1 / span 3; width: 48px; height: 48px; object-fit: contain; align-self: start; margin-top: 2px; }
+.entry-heading, .entry > p { grid-column: 2; }
+.entry-no-logo .entry-heading, .entry-no-logo > p { grid-column: 1 / -1; }
+.entry + .entry { margin-top: 24px; }
+.entry-heading { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
+.entry-heading h3 { font-size: 17.5px; }
+.entry-date { flex-shrink: 0; font-size: 14px; color: var(--muted); margin-bottom: 3px; }
+.entry-role { font-size: 16px; margin: 2px 0 4px; }
+.entry > p:last-child { font-size: 15.5px; color: var(--muted); line-height: 1.55; margin-bottom: 0; }
+.hint { font-size: 13px; color: #b08a3e; font-weight: 400; }
+
+/* ---------- Honors ---------- */
+.honors-list { list-style: none; padding: 0; margin: 0; }
+.honors-list li { display: grid; grid-template-columns: 46px minmax(0, 1fr); gap: 13px; font-size: 15.5px; line-height: 1.55; }
+.honors-list li + li { margin-top: 12px; }
+.honor-year { color: var(--muted); }
+
+/* ---------- Footer ---------- */
+.site-footer { margin: 52px 0 30px; padding-top: 18px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; gap: 15px; color: var(--muted); font-size: 13px; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1000px) {
+  .page-layout { grid-template-columns: 210px minmax(0, 1fr); gap: 38px; }
+  .header-inner nav { gap: 20px; }
+}
+
+@media (max-width: 760px) {
+  :root { --header-height: 56px; }
+  html { scroll-padding-top: 76px; }
+  .profile { top: 72px; }
+  .header-inner { padding: 0 20px; justify-content: center; }
+  .home-link { display: none; }
+  .header-inner nav { width: 100%; justify-content: space-between; gap: 10px; }
+  .header-inner nav a { font-size: 14.5px; }
+  .page-layout { display: block; margin-top: 28px; padding: 0 22px; }
+  .profile { position: static; display: grid; grid-template-columns: 130px minmax(0, 1fr); gap: 22px; margin-bottom: 36px; }
+  .portrait { width: 130px; height: 165px; }
+  .profile h1 { margin-top: 0; font-size: 27px; margin-bottom: 6px; }
+  .profile-role { font-size: 15px; margin-bottom: 10px; }
+  .profile-interests { display: none; }
+  .profile-links { display: flex; flex-wrap: wrap; gap: 8px 16px; }
+  .profile-links li + li { margin-top: 0; }
+  .profile-links a { font-size: 14px; gap: 6px; }
+  .email-address { margin-top: 10px; font-size: 12.5px; }
+  h2 { font-size: 24px; margin-bottom: 16px; }
+  main > section { margin-bottom: 38px; }
+}
+
+@media (max-width: 520px) {
+  body { font-size: 16px; line-height: 1.6; }
+  .page-layout { padding: 0 18px; }
+  .profile { grid-template-columns: 105px minmax(0, 1fr); gap: 18px; margin-bottom: 30px; }
+  .portrait { width: 105px; height: 142px; }
+  .profile h1 { font-size: 24px; }
+  .profile-role { font-size: 14px; }
+  .profile-links a { font-size: 13px; }
+  .profile-links .icon { display: none; }
+  .email-address { font-size: 12px; margin-top: 8px; }
+  .entry-heading { display: block; }
+  .entry-date { margin-top: 2px; }
+  .entry { grid-template-columns: 40px minmax(0, 1fr); column-gap: 13px; }
+  .entry-logo { width: 40px; height: 40px; }
+  .site-footer { flex-direction: column; gap: 3px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
